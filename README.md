@@ -6,12 +6,14 @@ Ce dépôt contient le code source et la documentation pour le projet du jeu du 
 
 ## 📐 Architecture du projet
 
-Pour garder un code clair et structuré, le programme est découpé en 4 fonctions principales :
+Pour garder un code clair et structuré, le programme est découpé en 6 fonctions principales :
 
 - `selection_mot()` : Choisit un mot au hasard depuis le fichier `dictionnaire.txt`.
+- `demander_saisi()`: Demande un saisie et fait sa validation (si la saisie est conforme à ce qui est attendue).
 - `calcule_indice(mot, lettres_trouvees)` : Génère la chaîne d'affichage avec les lettres devinées et les tirets.
-- `valider_saisie(saisie, mot)` : Vérifie la validité de l'entrée utilisateur.
-- `partie_terminee(vies, mot, lettres_trouvees)` : Contrôle les conditions de fin (victoire ou défaite).
+- `si_dans_mot(saisie, mot)` : Vérifie la validité de l'entrée utilisateur.
+- `partie_terminee(mot, lettres_trouvees)` : Contrôle les conditions de fin (victoire).
+- `si_contient(list_de_lettres, saisie)` : Vérifie si la liste fournie contient saisie.
 
 ### Algorigramme de la boucle de jeu
 
