@@ -7,7 +7,7 @@ def selection_mot():
     file.close()
 
     lines = content.splitlines()
-    selected_idx = int(random() * (len(lines) + 1))
+    selected_idx = int(random() * len(lines))
     return lines[selected_idx].split(';')[0]
 
 print(selection_mot())
