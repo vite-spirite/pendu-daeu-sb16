@@ -62,10 +62,14 @@ while vie > 0 and not trouve:
     if si_dans_mot(saisie, mot_a_trouver):
         if not si_contient(lettres_trouvees, saisie):
             lettres_trouvees.append(saisie)
+        else:
+            print("Vous avez déjà proposé cette lettre.")
     else:
         if not si_contient(lettres_incorrectes, saisie):
             lettres_incorrectes.append(saisie)
             vie -= 1
+        else:
+            print("Vous avez déjà proposé cette lettre.")
 
     trouve = partie_terminee(mot_a_trouver, lettres_trouvees)
 
