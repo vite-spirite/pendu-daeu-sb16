@@ -75,7 +75,7 @@ while vie > 0 and not trouve:
 
     print('============================================')
     print("Il vous reste", vie, "vies.")
-    print("Lettres incorrects:", lettres_incorrectes)
+    print("Lettres incorrectes:", lettres_incorrectes)
     print(calcule_indice(mot_a_trouver, lettres_trouvees))
 
 print('============================================')
