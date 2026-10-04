@@ -1,6 +1,6 @@
-def si_dans_mot(char, word):
-    for i in word:
-        if char == i:
+def si_dans_mot(caractere, mot):
+    for i in mot:
+        if caractere == i:
             return True
 
     return False
