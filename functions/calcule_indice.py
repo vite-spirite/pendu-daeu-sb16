@@ -1,15 +1,15 @@
 from si_dans_mot import si_dans_mot
 
-def calcule_indice(word, characters):
+def calcule_indice(mot, lettre_trouvees):
     indice = ""
 
-    for i in word:
-        if si_dans_mot(i, characters):
-            indice += i
+    for lettre in mot:
+        if lettre in lettre_trouvees:
+            indice += lettre
         else:
-            indice += "_"
+            indice += "-"
 
-    return indice
+    return indice 
 
 
 print(calcule_indice("aeaeaeae", ['e']))
