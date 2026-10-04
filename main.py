@@ -10,7 +10,7 @@ def si_dans_mot(caractere, mot):
 
     return False
 
-def demander_saisi():
+def demander_saisie():
   saisie = input("proposez une lettre : ")
 
   while len(saisie) != 1 or not saisie.isalpha():
@@ -49,35 +49,35 @@ def partie_terminee(mot_a_trouver, lettres_trouvees):
 
 
 mot_a_trouver = selection_mot()
-lettres_trouves = []
-lettres_incorrects = []
+lettres_trouvees = []
+lettres_incorrectes = []
 vie = 5
 trouve = False
 
-print("Mot à trouver:", calcule_indice(mot_a_trouver, lettres_trouves))
+print("Mot à trouver:", calcule_indice(mot_a_trouver, lettres_trouvees))
 
 while vie > 0 and not trouve:
-    saisie = demander_saisi()
+    saisie = demander_saisie()
 
     if si_dans_mot(saisie, mot_a_trouver):
-        if not si_contient(lettres_trouves, saisie):
-            lettres_trouves.append(saisie)
+        if not si_contient(lettres_trouvees, saisie):
+            lettres_trouvees.append(saisie)
     else:
-        if not si_contient(lettres_incorrects, saisie):
-            lettres_incorrects.append(saisie)
+        if not si_contient(lettres_incorrectes, saisie):
+            lettres_incorrectes.append(saisie)
             vie -= 1
 
-    trouve = partie_terminee(mot_a_trouver, lettres_trouves)
+    trouve = partie_terminee(mot_a_trouver, lettres_trouvees)
 
     print('============================================')
     print("Il vous reste", vie, "vies.")
-    print("Lettres incorrects:", lettres_incorrects)
-    print(calcule_indice(mot_a_trouver, lettres_trouves))
+    print("Lettres incorrects:", lettres_incorrectes)
+    print(calcule_indice(mot_a_trouver, lettres_trouvees))
 
 print('============================================')
 if trouve:
-    print("Vous avez gangé.")
+    print("Vous avez gagné.")
 else:
     print("Vous avez perdu.")
 
-print("Le mot à trouver été:", mot_a_trouver)
+print("Le mot à trouver était:", mot_a_trouver)
