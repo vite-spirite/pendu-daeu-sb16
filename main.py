@@ -41,6 +41,18 @@ def selection_mot():
     selected_idx = int(random() * len(lines))
     return lines[selected_idx].split(';')[0]
 
+def calcule_indice(mot, lettre_trouvees):
+    indice = ""
+
+    for lettre in mot:
+        if lettre in lettre_trouvees:
+            indice += lettre
+        else:
+            indice += "_"
+
+    return indice 
+
+
 def partie_terminee(mot_a_trouver, lettres_trouvees):
     for lettre in mot_a_trouver:
         if lettre not in lettres_trouvees:
@@ -48,3 +60,36 @@ def partie_terminee(mot_a_trouver, lettres_trouvees):
     return True  
 
 
+mot_a_trouver = selection_mot()
+lettres_trouves = []
+lettres_incorrects = []
+vie = 5
+trouve = False
+
+print("Mot à trouver:", calcule_indice(mot_a_trouver, lettres_trouves))
+
+while vie > 0 and not trouve:
+    saisie = demander_saisi()
+
+    if si_dans_mot(saisie, mot_a_trouver):
+        if not si_contient(lettres_trouves, saisie):
+            lettres_trouves.append(saisie)
+    else:
+        if not si_contient(lettres_incorrects, saisie):
+            lettres_incorrects.append(saisie)
+            vie -= 1
+
+    trouve = partie_terminee(mot_a_trouver, lettres_trouves)
+
+    print('============================================')
+    print("Il vous reste", vie+1, "vies.")
+    print("Lettres incorrects:", lettres_incorrects)
+    print(calcule_indice(mot_a_trouver, lettres_trouves))
+
+print('============================================')
+if trouve:
+    print("Vous avez gangé.")
+else:
+    print("Vous avez perdu.")
+
+print("Le mot à trouver été:", mot_a_trouver)
