@@ -3,9 +3,9 @@ from random import random
 def si_contient(liste, caractere):
     return caractere in liste  
 
-def si_dans_mot(char, word):
-    for i in word:
-        if char == i:
+def si_dans_mot(caractere, mot):
+    for i in mot:
+        if caractere == i:
             return True
 
     return False
@@ -29,23 +29,11 @@ def selection_mot():
     selected_idx = int(random() * len(lines))
     return lines[selected_idx].split(';')[0]
 
-
-
-def selection_mot():
-    file = open('dictionnaire.txt', mode='r', encoding='utf8')
-
-    content = file.read()
-    file.close()
-
-    lines = content.splitlines()
-    selected_idx = int(random() * len(lines))
-    return lines[selected_idx].split(';')[0]
-
 def calcule_indice(mot, lettre_trouvees):
     indice = ""
 
     for lettre in mot:
-        if lettre in lettre_trouvees:
+        if si_contient(lettre_trouvees, lettre):
             indice += lettre
         else:
             indice += "_"
@@ -55,7 +43,7 @@ def calcule_indice(mot, lettre_trouvees):
 
 def partie_terminee(mot_a_trouver, lettres_trouvees):
     for lettre in mot_a_trouver:
-        if lettre not in lettres_trouvees:
+        if not si_contient(lettres_trouvees, lettre):
             return False
     return True  
 
@@ -82,7 +70,7 @@ while vie > 0 and not trouve:
     trouve = partie_terminee(mot_a_trouver, lettres_trouves)
 
     print('============================================')
-    print("Il vous reste", vie+1, "vies.")
+    print("Il vous reste", vie, "vies.")
     print("Lettres incorrects:", lettres_incorrects)
     print(calcule_indice(mot_a_trouver, lettres_trouves))
 
